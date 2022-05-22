@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1653183654 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\fecha.c
+	"fecha.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\fecha.h
+
+1653193080 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"validaciones.h"
+
+1652236327 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+	"funciones.h"
+	"validaciones.h"
+
+1652236327 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\funciones.h
+
+1653255955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\validaciones.h
+	"fecha.h"
+
+1653195995 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+	"validaciones.h"
+	"tipo.h"
+	"mascota.h"
+	"servicio.h"
+	"trabajo.h"
+	"color.h"
+
+1653189839 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\color.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"color.h"
+	"validaciones.h"
+
+1653255955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\color.h
+
+1653196343 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"servicio.h"
+
+1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.h
+
+1653257955 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"tipo.h"
+
+1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.h
+
+1653196466 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"trabajo.h"
+
+1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.h
+	"mascota.h"
+
+1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.h
+	"color.h"
+	"tipo.h"
+	"validaciones.h"
+	"servicio.h"
+
+1653257955 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"mascota.h"
+
