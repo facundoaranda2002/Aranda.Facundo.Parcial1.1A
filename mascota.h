@@ -161,3 +161,5 @@ int validarMascotas(eMascota mascotas[], int tam, int id);
  */
 int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], int tamCol, eTipo tipos[], int tamTipos);
 
+int hardcodearMascotas(eMascota vec[], int tam, int cant, int* pId);
+

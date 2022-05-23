@@ -20,6 +20,9 @@ char menu()
     printf("G- Listar Servicios\n");
     printf("H- Alta Trabajo\n");
     printf("I- Listar Trabajos\n");
+    printf("J- Hardcodear mascotas\n");
+    printf("K- Hardcodear trabajos\n");
+    printf("L- Informar Servicio\n");
     printf("Z- Salir\n");
     printf("Ingrese opcion: ");
     fflush(stdin);
@@ -375,3 +378,34 @@ int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], in
     }
     return todoOk;
 }
+
+int hardcodearMascotas(eMascota vec[], int tam, int cant, int* pId)
+{
+
+    int todoOk = 0;
+    eMascota impostores[] =
+    {
+        {0, "Juan", 1000, 5000, 2, 's',0},
+        {0, "Daniela", 1001, 5001, 3, 'n', 0},
+        {0, "Lucia", 1000, 5002, 10, 's', 0},
+        {0, "Mauro", 1002, 5000, 11, 'n', 0},
+        {0, "Diego", 1003, 5000, 3, 'n', 0},
+    };
+
+    if(vec != NULL && tam > 0 && pId != NULL && cant > 0 && cant <= tam)
+    {
+
+        for(int i=0; i < cant; i++)
+        {
+            vec[i] = impostores[i];
+            vec[i].id = *pId;
+            *pId = *pId +1;
+
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+
+

@@ -17,6 +17,8 @@
 #define TAM_TIPO 5
 #define TAM_SERVICIO 3
 #define TAM_TRABAJO 5
+#define MASC_HARD 5
+#define TRAB_HARD 5
 
 int main()
 {
@@ -170,6 +172,53 @@ int main()
                     if(listarTrabajos(trabajos, TAM_TRABAJO, listaMascotas, TAM, servicios, TAM_SERVICIO)==0)
                     {
                         printf("Problema al hacer el listado de trabajos\n");
+                    }
+                }
+                break;
+            case 'j':
+                system("cls");
+                proximoIdMascota=1;
+                if(hardcodearMascotas(listaMascotas, TAM, MASC_HARD, &proximoIdMascota))
+                {
+                    printf("Se han harcodeado %d mascotas\n", MASC_HARD);
+                    contadorMascotas=contadorMascotas+MASC_HARD;
+                }
+                else
+                {
+                    printf("Problema al hardcodear mascotas\n");
+                }
+                break;
+            case 'k':
+                system("cls");
+                if(contadorMascotas<MASC_HARD)
+                {
+                    printf("Faltan mascotas en el sistema\n");
+                }
+                else
+                {
+                    proximoIdTrabajo=1;
+                    if(hardcodearTrabajos(trabajos, TAM_TRABAJO, TRAB_HARD, &proximoIdTrabajo))
+                    {
+                        printf("Se han harcodeado %d trabajos\n", TRAB_HARD);
+                        contadorTrabajos=contadorTrabajos+TRAB_HARD;
+                    }
+                    else
+                    {
+                        printf("Problema al hardcodear trabajos\n");
+                    }
+                }
+                break;
+            case 'l':
+                system("cls");
+                if(contadorTrabajos==0)
+                {
+                    printf("No hay trabajos en el sistema\n");
+                }
+                else
+                {
+                    if(!informarServicio(servicios, TAM_SERVICIO, listaMascotas, TAM, trabajos, TAM_TRABAJO))
+                    {
+                        printf("Problema al informar servicios\n");
                     }
                 }
                 break;

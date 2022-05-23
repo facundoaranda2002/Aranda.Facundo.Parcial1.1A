@@ -60,3 +60,12 @@ int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int ta
  *
  */
 int listarTrabajos(eTrabajo trabajos[], int tam, eMascota mascotas[], int tamMasc, eServicio servicios[], int tamServ);
+
+int hardcodearTrabajos(eTrabajo vec[], int tam, int cant, int* pId);
+
+int utn_getTrabajos(eMascota mascotas[], int tam, int* pId, eTrabajo trabajos[], int tamTrab, eServicio servicios[], int tamServ);
+
+int validarTrabajos(eTrabajo trabajos[], int tam, int id);
+
+//informes
+int informarServicio(eServicio servicios[], int tam, eMascota mascotas[], int tamMasc, eTrabajo trabajos[], int tamTrab);

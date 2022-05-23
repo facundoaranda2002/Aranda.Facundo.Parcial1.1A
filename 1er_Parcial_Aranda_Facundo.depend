@@ -27,7 +27,7 @@
 1653255955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\validaciones.h
 	"fecha.h"
 
-1653195995 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\main.c
+1653267283 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -48,13 +48,13 @@
 
 1653255955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\color.h
 
-1653196343 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.c
+1653265946 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"servicio.h"
 
-1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.h
+1653265961 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.h
 
 1653257955 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.c
 	<stdio.h>
@@ -65,22 +65,22 @@
 
 1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.h
 
-1653196466 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.c
+1653302623 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"trabajo.h"
 
-1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.h
+1653303545 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.h
 	"mascota.h"
 
-1653257955 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.h
+1653266076 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.h
 	"color.h"
 	"tipo.h"
 	"validaciones.h"
 	"servicio.h"
 
-1653257955 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.c
+1653266036 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
