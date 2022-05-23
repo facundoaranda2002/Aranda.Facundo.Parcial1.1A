@@ -48,3 +48,4 @@ int validarServicios(eServicio servicios[], int tam, int id);
  */
 int utn_getServicios(eServicio servicios[], int tam, int* pId);
 
+int cargarPrecio(eServicio servicios[], int tam, int id, int* x);

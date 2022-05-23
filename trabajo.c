@@ -471,4 +471,147 @@ int informColorMasMascotas(eMascota vec[], int tam, eColor colores[], int tamCol
     return todoOk;
 }
 
+int informarServicioMascota(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk =0;
+    char descripcionMasc[20];
+    char descripcionServ[20];
+    int id;
+    int flag=0;
+    if(vec!=NULL && tam > 0 && servicios!=NULL && tamServ>0 && trabajos!=NULL && tamTrab>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes != NULL && tamClientes>0)
+    {
+        printf("    *** Informe de servicios a mascota ***\n\n");
+        printf("--------------------------------------------------\n");
+        if(utn_getMascotas(vec, tam, &id, colores, tamColores, tipos, tamTipos, clientes, tamClientes))
+        {
+            printf("\n\n");
+            printf("          Servicio       Nombre       Fecha\n");
+            printf("--------------------------------------------------\n");
+            for(int i=0; i<tam; i++)
+            {
+                if(!vec[i].isEmpty && trabajos[i].idMascota==id)
+                {
+                    cargarDescripcionMascota(vec, tam, trabajos[i].idMascota, descripcionMasc);
+                    cargarDescripcionServicio(servicios, tam, trabajos[i].idServicio, descripcionServ);
+                    printf(" %15s    %10s    %02d/%02d/%d \n", descripcionServ, descripcionMasc, trabajos[i].fecha.dia, trabajos[i].fecha.mes, trabajos[i].fecha.anio);
+                    flag=1;
+                }
+            }
+            if(!flag)
+            {
+                cargarDescripcionMascota(vec, tam, id, descripcionMasc);
+                printf("%s no fue atentido con ningun trabajo\n", descripcionMasc);
+            }
+            printf("\n\n");
+            todoOk=1;
+        }
+    }
+    return todoOk;
+}
 
+int informarSumaImportesMasc(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk =0;
+    char descripcionMasc[20];
+    int id;
+    int x;
+    float sumaImportes=0;
+    int flag=0;
+    if(vec!=NULL && tam > 0 && servicios!=NULL && tamServ>0 && trabajos!=NULL && tamTrab>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes != NULL && tamClientes>0)
+    {
+        printf("    *** Informe suma de importes de servicios a mascota ***\n\n");
+        printf("--------------------------------------------------\n");
+        if(utn_getMascotas(vec, tam, &id, colores, tamColores, tipos, tamTipos, clientes, tamClientes))
+        {
+            for(int i=0; i<tam; i++)
+            {
+                if(!trabajos[i].isEmpty && trabajos[i].idMascota==id)
+                {
+                    cargarPrecio(servicios, tamServ, trabajos[i].idServicio, &x);
+                    sumaImportes=sumaImportes+x;
+                    flag=1;
+                }
+            }
+            if(!flag)
+            {
+                cargarDescripcionMascota(vec, tam, id, descripcionMasc);
+                printf("%s no fue atentido con ningun trabajo\n", descripcionMasc);
+            }
+            else
+            {
+                cargarDescripcionMascota(vec, tam, id, descripcionMasc);
+               printf("La suma de importes de la mascota %s es de  $ %.2f\n", descripcionMasc, sumaImportes);
+            }
+            printf("\n\n");
+            todoOk=1;
+        }
+    }
+    return todoOk;
+}
+
+int informarServicioFecha(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk =0;
+    char descripcionMasc[20];
+    char descripcionServ[20];
+    int flag=0;
+    eFecha fecha;
+    if(vec!=NULL && tam > 0 && servicios!=NULL && tamServ>0 && trabajos!=NULL && tamTrab>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes != NULL && tamClientes>0)
+    {
+        printf("    *** Informe de servicios en cierta fecha ***\n\n");
+        printf("--------------------------------------------------\n");
+        if(utn_getFecha(&fecha, "Ingrese fecha: ", "Error. ", 2000, 2035))
+        {
+            if(!validarFechaTrabajo(fecha, trabajos, tamTrab))
+            {
+                printf("Error fecha invalida\n");
+            }
+            else
+            {
+                {
+                    printf("\n\n");
+                    printf("          Servicio       Nombre       Fecha\n");
+                    printf("--------------------------------------------------\n");
+                    for(int i=0; i<tam; i++)
+                    {
+                        if(!vec[i].isEmpty && trabajos[i].fecha.dia == fecha.dia && trabajos[i].fecha.mes==fecha.mes && trabajos[i].fecha.anio==fecha.anio)
+                        {
+                            cargarDescripcionMascota(vec, tam, trabajos[i].idMascota, descripcionMasc);
+                            cargarDescripcionServicio(servicios, tam, trabajos[i].idServicio, descripcionServ);
+                            printf(" %15s    %10s    %02d/%02d/%d \n", descripcionServ, descripcionMasc, trabajos[i].fecha.dia, trabajos[i].fecha.mes, trabajos[i].fecha.anio);
+                            flag=1;
+                        }
+                    }
+                    if(!flag)
+                    {
+                        printf("No hubieron trabajos en esa fecha\n");
+                    }
+                    printf("\n\n");
+                    todoOk=1;
+                }
+
+            }
+        }
+
+    }
+    return todoOk;
+}
+
+int validarFechaTrabajo(eFecha fecha, eTrabajo trabajos[], int tamTrab)
+{
+    int todoOk=0;
+
+    if(trabajos!=NULL && tamTrab>0)
+    {
+        for(int i=0; i<tamTrab; i++)
+        {
+           if(trabajos[i].fecha.dia == fecha.dia && trabajos[i].fecha.mes==fecha.mes && trabajos[i].fecha.anio==fecha.anio)
+           {
+              todoOk=1;
+              break;
+           }
+        }
+    }
+
+    return todoOk;
+}

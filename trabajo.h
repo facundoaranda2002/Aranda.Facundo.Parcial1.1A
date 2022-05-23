@@ -44,6 +44,8 @@ int buscarTrabajoLibre(eTrabajo vec[], int tam, int* pIndex);
  * \param tamColores int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+  * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
@@ -81,4 +83,12 @@ int informarMascotasColorYTipo(eMascota vec[], int tam, eColor colores[], int ta
 
 int informColorMasMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 
+int informarServicioMascota(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
+int informarSumaImportesMasc(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
 int informarServicio(eServicio servicios[], int tam, eMascota mascotas[], int tamMasc, eTrabajo trabajos[], int tamTrab);
+
+int validarFechaTrabajo(eFecha fecha, eTrabajo trabajos[], int tamTrab);
+
+int informarServicioFecha(eMascota vec[], int tam, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);

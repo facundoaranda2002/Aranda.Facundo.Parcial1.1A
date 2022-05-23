@@ -28,7 +28,10 @@ char menu()
     printf("4- Informar Mascotas por tipo\n");
     printf("5- Informar Cantidad de Mascotas de color y tipo a seleccionar\n");
     printf("6- Informar Colores mas predominantes\n");
+    printf("7- Informar Trabajos realizados a una mascota\n");
+    printf("8- Informar Suma de importes de Trabajos realizados a una mascota\n");
     printf("9- Informar Servicio\n");
+    printf("0- Informar Trabajos realizados en cierta fecha\n");
     printf("Z- Salir\n");
     printf("Ingrese opcion: ");
     fflush(stdin);

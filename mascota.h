@@ -83,6 +83,8 @@ int menuModificarMascota();
  * \param tamColores int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+ * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
@@ -94,6 +96,8 @@ int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, 
  * \param tamColores int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+  * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
@@ -106,6 +110,8 @@ int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], 
  * \param tamColores int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+  * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
@@ -126,6 +132,8 @@ int ordenarMascotasPorTipoYNombre(eMascota vec[], int tam);
  * \param tamColores int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+  * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
@@ -158,6 +166,8 @@ int validarMascotas(eMascota mascotas[], int tam, int id);
  * \param tamCol int tamanio del array de colores
  * \param tipos[] eTipo array de tipos
  * \param tamTipos int tamanio del array de tipos
+  * \param clientes[] eCliente array de clientes
+ * \param tamClientes int tamanio del array de clientes
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */

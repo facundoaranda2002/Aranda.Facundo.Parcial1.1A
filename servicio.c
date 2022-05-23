@@ -85,3 +85,23 @@ int utn_getServicios(eServicio servicios[], int tam, int* pId)
     return todoOk;
 }
 
+int cargarPrecio(eServicio servicios[], int tam, int id, int* x)
+{
+    int todoOk=0;
+
+    if(servicios!=NULL && tam>0 && validarServicios(servicios, tam, id) && x!=NULL)
+    {
+        for(int i=0; i<tam; i++)
+        {
+           if(servicios[i].id==id)
+           {
+               *x=servicios[i].precio;
+               break;
+           }
+        }
+
+        todoOk=1;
+    }
+
+    return todoOk;
+}

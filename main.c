@@ -302,6 +302,34 @@ int main()
                     }
                 }
                 break;
+            case '7':
+                system("cls");
+                if(contadorTrabajos==0)
+                {
+                    printf("No hay trabajos en el sistema\n");
+                }
+                else
+                {
+                    if(!informarServicioMascota(listaMascotas, TAM, servicios, TAM_SERVICIO, trabajos, TAM_TRABAJO, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar trabajos a una mascota\n");
+                    }
+                }
+                break;
+            case '8':
+                system("cls");
+                if(contadorTrabajos==0)
+                {
+                    printf("No hay trabajos en el sistema\n");
+                }
+                else
+                {
+                    if(!informarSumaImportesMasc(listaMascotas, TAM, servicios, TAM_SERVICIO, trabajos, TAM_TRABAJO, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar suma de importes de trabajos a una mascota\n");
+                    }
+                }
+                break;
             case '9':
                 system("cls");
                 if(contadorTrabajos==0)
@@ -311,6 +339,20 @@ int main()
                 else
                 {
                     if(!informarServicio(servicios, TAM_SERVICIO, listaMascotas, TAM, trabajos, TAM_TRABAJO))
+                    {
+                        printf("Problema al informar servicios\n");
+                    }
+                }
+                break;
+            case '0':
+                system("cls");
+                if(contadorTrabajos==0)
+                {
+                    printf("No hay trabajos en el sistema\n");
+                }
+                else
+                {
+                    if(!informarServicioFecha(listaMascotas, TAM, servicios, TAM_SERVICIO, trabajos, TAM_TRABAJO, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
                     {
                         printf("Problema al informar servicios\n");
                     }

@@ -27,7 +27,7 @@
 1653310736 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\validaciones.h
 	"fecha.h"
 
-1653315728 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\main.c
+1653318503 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -49,13 +49,13 @@
 
 1653304825 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\color.h
 
-1653304825 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.c
+1653317807 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"servicio.h"
 
-1653304825 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.h
+1653317799 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\servicio.h
 
 1653304825 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.c
 	<stdio.h>
@@ -66,24 +66,24 @@
 
 1653304825 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\tipo.h
 
-1653315748 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.c
+1653318641 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"trabajo.h"
 	"fecha.h"
 
-1653315728 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.h
+1653318479 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\trabajo.h
 	"mascota.h"
 
-1653310886 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.h
+1653316756 e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.h
 	"color.h"
 	"tipo.h"
 	"validaciones.h"
 	"servicio.h"
 	"cliente.h"
 
-1653315728 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.c
+1653318503 source:e:\documentos\facultad\fra\programacion 1\codigosconbauss\1er_parcial_aranda_facundo\mascota.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
