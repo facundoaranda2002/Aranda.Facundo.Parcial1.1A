@@ -2,6 +2,7 @@
 #include "tipo.h"
 #include "validaciones.h"
 #include "servicio.h"
+#include "cliente.h"
 
 #ifndef MASCOTA_H_INCLUDED
 #define MASCOTA_H_INCLUDED
@@ -14,6 +15,7 @@ typedef struct
     int idColor;
     int edad;
     char vacunado;
+    int idCliente;
     int isEmpty;
 }
 eMascota;
@@ -84,7 +86,7 @@ int menuModificarMascota();
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos);
+int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 /** \brief muestra los datos de una mascota
  *
  * \param m eMascota variable con los datos de la mascota
@@ -95,7 +97,7 @@ int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, 
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], int tamTipos);
+int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 /** \brief lista las mascotas que se encuentran en el array
  *
  * \param vec[] eMascota array de mascotas
@@ -107,7 +109,7 @@ int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], 
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int listarMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos);
+int listarMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 /** \brief ordena el array de mascotas por tipo y nombre
  *
  * \param vec[] eMascota array de mascotas
@@ -127,7 +129,7 @@ int ordenarMascotasPorTipoYNombre(eMascota vec[], int tam);
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int bajaMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos);
+int bajaMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 /** \brief carga el nombre de la mascota correspondiente a la id recibida
  *
  * \param mascotas[] eMascota array de mascotas
@@ -159,7 +161,7 @@ int validarMascotas(eMascota mascotas[], int tam, int id);
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], int tamCol, eTipo tipos[], int tamTipos);
+int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], int tamCol, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 
 int hardcodearMascotas(eMascota vec[], int tam, int cant, int* pId);
 

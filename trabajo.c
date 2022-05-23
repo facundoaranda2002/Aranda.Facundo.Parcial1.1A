@@ -4,6 +4,7 @@
 
 
 #include "trabajo.h"
+#include "fecha.h"
 
 
 int inicializarTrabajos(eTrabajo vec[], int tam)
@@ -40,14 +41,14 @@ int buscarTrabajoLibre(eTrabajo vec[], int tam, int* pIndex)
     return todoOk;
 }
 
-int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos)
+int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOk = 0;
     int indice;
     eTrabajo nuevoTrabajo;
     eFecha fecha;
 
-    if(vec!=NULL && tam > 0 && servicios!=NULL && tamServ>0 && trabajos!=NULL && tamTrab>0 && pId!=NULL && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0)
+    if(vec!=NULL && tam > 0 && servicios!=NULL && tamServ>0 && trabajos!=NULL && tamTrab>0 && pId!=NULL && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes != NULL && tamClientes>0)
     {
         system("cls");
         printf("   *** Alta Trabajo ***\n\n");
@@ -63,7 +64,7 @@ int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int ta
             else
             {
 
-                utn_getMascotas(vec, tam, &nuevoTrabajo.idMascota, colores, tamColores, tipos, tamTipos);
+                utn_getMascotas(vec, tam, &nuevoTrabajo.idMascota, colores, tamColores, tipos, tamTipos, clientes, tamClientes);
                 printf("\n\n");
 
                 utn_getServicios(servicios, tamServ, &nuevoTrabajo.idServicio);
@@ -220,3 +221,254 @@ int validarTrabajos(eTrabajo trabajos[], int tam, int id)
     }
     return todoOk;
 }
+
+int informarMascotaColor(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk = 0;
+    int idColor;
+    int flag = 1;
+    char descripcion[20];
+
+
+    if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
+    {
+        system("cls");
+        printf("   *** Listado de mascotas de un color ***\n");
+        printf("---------------------------------------------------\n");
+
+        utn_getColores(colores, tamColores, &idColor);
+
+        printf("      Id       Nombre       Tipo         Color     Edad Vacunado   Cliente\n");
+        printf("------------------------------------------------------------------------------\n");
+
+        for(int i=0; i < tam; i++)
+        {
+            if( !vec[i].isEmpty && vec[i].idColor == idColor)
+            {
+                mostrarMascota(vec[i], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
+                flag = 0;
+            }
+        }
+        if(flag)
+        {
+            cargarDescripcionColor(colores, tamColores, idColor, descripcion);
+            printf("No hay mascotas registradas con el color %s\n", descripcion);
+        }
+        printf("\n");
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int informarPromedioMascotasVacunadas(eMascota vec[], int tam)
+{
+
+    int todoOk = 0;
+    int acumMasc = 0;
+    int contMasc = 0;
+    float promedio = 0;
+
+    if(vec != NULL && tam > 0 )
+    {
+
+        for(int i=0; i < tam; i++)
+        {
+            if( !vec[i].isEmpty)
+            {
+                contMasc++;
+                if(vec[i].vacunado=='s')
+                {
+                  acumMasc++;
+                }
+            }
+
+        }
+
+        if(contMasc > 0)
+        {
+            promedio = (float)acumMasc / contMasc;
+        }
+
+        system("cls");
+        printf("    *** Informe Promedio Vacunados   ***\n\n");
+        printf("Promedio vacunados: %.2f porciento\n", promedio*100);
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int informarMascotasMenorEdad(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk = 0;
+    int menorEdad;
+    int flag = 0;
+
+    if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
+    {
+
+        for(int i=0; i < tam; i++)
+        {
+            if( !vec[i].isEmpty && (vec[i].edad < menorEdad || !flag)  )
+            {
+                menorEdad = vec[i].edad;
+                flag = 1;
+            }
+        }
+
+        system("cls");
+        printf("     *** Informe Mascota menor edad   ***\n");
+        printf("------------------------------------------\n\n");
+
+        if(flag == 0)
+        {
+            printf("No hay Mascotas en el sistema\n\n");
+        }
+        else
+        {
+            printf("      Id       Nombre       Tipo         Color     Edad Vacunado   Cliente\n");
+            printf("------------------------------------------------------------------------------\n");
+
+            for(int i=0; i < tam; i++)
+            {
+                if( !vec[i].isEmpty && vec[i].edad == menorEdad)
+                {
+                    mostrarMascota(vec[i], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
+                }
+            }
+        }
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int informarMascotasXTipo(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk = 0;
+    int flag;
+
+    if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
+    {
+        system("cls");
+        printf("    *** Listado de mascotas por tipo  ***\n");
+        printf("-----------------------------------------------------\n");
+
+        for(int s=0; s < tamTipos; s++)
+        {
+            printf("Tipo: %s\n\n", tipos[s].descripcion);
+            printf("      Id       Nombre       Tipo         Color     Edad Vacunado   Cliente\n");
+            printf("------------------------------------------------------------------------------\n");
+
+            flag = 1;
+            for(int e = 0; e < tam; e++)
+            {
+                if( !vec[e].isEmpty && vec[e].idTipo == tipos[s].id)
+                {
+                    mostrarMascota(vec[e], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
+                    flag = 0;
+                }
+            }
+            if(flag)
+            {
+                printf("No hay mascotas\n");
+            }
+            printf("\n\n");
+
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int informarMascotasColorYTipo(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+
+    int todoOk = 0;
+    int contMasc = 0;
+    int idTipo;
+    int idColor;
+    int flag=0;
+    char auxTipos[20];
+    char auxColor[20];
+
+    if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
+    {
+        system("cls");
+        printf("    *** Informe de mascotas de un color y tipo  ***\n");
+        printf("-----------------------------------------------------\n");
+
+        utn_getColores(colores, tamColores, &idColor);
+        utn_getTipos(tipos, tamTipos, &idTipo);
+        cargarDescripcionColor(colores, tamColores, idColor, auxColor);
+        cargarDescripcionTipo(tipos, tamTipos, idTipo, auxTipos);
+
+        for(int i=0; i < tam; i++)
+        {
+            if(vec[i].isEmpty==0 && vec[i].idColor==idColor && vec[i].idTipo==idTipo)
+            {
+                contMasc=contMasc+1;
+                flag=1;
+            }
+        }
+        fflush(stdin);
+        if(flag==0)
+        {
+            printf("No hay mascotas de color %s y de tipo %s en el sistema\n", auxColor, auxTipos);
+        }
+        else
+        {
+            printf("Hay %d mascotas de color %s y de tipo %s en el sistema\n", contMasc, auxColor, auxTipos);
+        }
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int informColorMasMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
+{
+    int todoOk = 0;
+    int totalesColor[tamColores];
+    int mayor;
+    int flag = 1;
+
+       if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
+        {
+            system("cls");
+            printf("   ***  Color con mas mascotas ***\n");
+            printf("---------------------------------------------------\n");
+
+
+            for(int i=0; i < tamColores; i++){
+                totalesColor[i] = 0;
+            }
+
+            for(int s = 0; s < tamColores; s++){
+                for(int e = 0; e < tam; e++){
+                    if(!vec[e].isEmpty && vec[e].idColor == colores[s].id){
+                        totalesColor[s]++;
+                    }
+                }
+            }
+            // recorro totales sueldos para conocer el mayor
+            for(int s = 0; s < tamColores; s++){
+                if(flag || totalesColor[s] > mayor){
+                    mayor = totalesColor[s];
+                    flag = 0;
+                }
+            }
+            // recorro totales sueldos buscando los lugares donde aparece mayor
+            printf("Los colores mas predominantes tienen %d mascotas y son :\n", mayor);
+              for(int s = 0; s < tamColores; s++){
+                if(totalesColor[s] == mayor){
+                    printf("%s\n", colores[s].nombreColor);
+                }
+            }
+          todoOk = 1;
+        }
+    return todoOk;
+}
+
+

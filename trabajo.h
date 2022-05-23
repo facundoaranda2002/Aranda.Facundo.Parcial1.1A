@@ -47,7 +47,7 @@ int buscarTrabajoLibre(eTrabajo vec[], int tam, int* pIndex);
  * \return int retorna 1 si los parametros son validos o 0 si alguno es invalido
  *
  */
-int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos);
+int altaTrabajo(eMascota vec[], int tam, int* pId, eServicio servicios[], int tamServ, eTrabajo trabajos[], int tamTrab, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
 /** \brief lista los trabajos que se encuentran en el array
  *
  * \param trabajos[] eTrabajo array de trabajos
@@ -68,4 +68,17 @@ int utn_getTrabajos(eMascota mascotas[], int tam, int* pId, eTrabajo trabajos[],
 int validarTrabajos(eTrabajo trabajos[], int tam, int id);
 
 //informes
+
+int informarMascotaColor(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
+int informarPromedioMascotasVacunadas(eMascota vec[], int tam);
+
+int informarMascotasMenorEdad(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
+int informarMascotasXTipo(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
+int informarMascotasColorYTipo(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
+int informColorMasMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes);
+
 int informarServicio(eServicio servicios[], int tam, eMascota mascotas[], int tamMasc, eTrabajo trabajos[], int tamTrab);

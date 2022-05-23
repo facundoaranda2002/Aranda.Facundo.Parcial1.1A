@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+#include "cliente.h"
 #include "fecha.h"
 #include "validaciones.h"
 #include "tipo.h"
@@ -10,6 +10,7 @@
 #include "servicio.h"
 #include "trabajo.h"
 #include "color.h"
+
 
 
 #define TAM 5
@@ -24,6 +25,15 @@ int main()
 {
     eMascota listaMascotas[TAM];
     eTrabajo trabajos[TAM_TRABAJO];
+    eCliente clientes[5]=
+    {
+       {1, "ala", 'f'},
+       {2, "ola", 'm'},
+       {3, "ila", 'f'},
+       {4, "ela", 'm'},
+       {5, "fala", 'f'}
+    };
+
     char salir='n';
     int contadorMascotas=0;
     int contadorTrabajos=0;
@@ -83,7 +93,7 @@ int main()
                 }
                 else
                 {
-                    if(!modificarMascota(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO))
+                    if(!modificarMascota(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
                     {
                         printf("Problema al hacer la modificacion de la mascota\n");
                     }
@@ -97,7 +107,7 @@ int main()
                 }
                 else
                 {
-                    if(!bajaMascota(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO))
+                    if(!bajaMascota(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
                     {
                         printf("Problema al hacer la baja de la mascota\n");
                     }
@@ -115,7 +125,7 @@ int main()
                 }
                 else
                 {
-                    if(!listarMascotas(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO))
+                    if(!listarMascotas(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
                     {
                         printf("Problema al hacer el listado de mascotas\n");
                     }
@@ -146,7 +156,7 @@ int main()
                 system("cls");
                 if(contadorMascotas!=0)
                 {
-                    if(altaTrabajo(listaMascotas, TAM, &proximoIdTrabajo, servicios, TAM_SERVICIO, trabajos, TAM_TRABAJO, colores, TAM_COLOR, tipos, TAM_TIPO))
+                    if(altaTrabajo(listaMascotas, TAM, &proximoIdTrabajo, servicios, TAM_SERVICIO, trabajos, TAM_TRABAJO, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
                     {
                         printf("Trabajo agregado con exito!!!\n");
                         contadorTrabajos++;
@@ -208,7 +218,91 @@ int main()
                     }
                 }
                 break;
-            case 'l':
+            case '1':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informarMascotaColor(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar mascotas por color\n");
+                    }
+                }
+                break;
+            case '2':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informarPromedioMascotasVacunadas(listaMascotas, TAM))
+                    {
+                        printf("Problema al informar mascotas vacunadas\n");
+                    }
+                }
+                break;
+            case '3':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informarMascotasMenorEdad(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar mascotas menor edad\n");
+                    }
+                }
+                break;
+            case '4':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informarMascotasXTipo(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar mascotas por tipo\n");
+                    }
+                }
+                break;
+            case '5':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informarMascotasColorYTipo(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar mascotas de color y tipo\n");
+                    }
+                }
+                break;
+            case '6':
+                system("cls");
+                if(contadorMascotas==0)
+                {
+                    printf("No hay mascotas en el sistema\n");
+                }
+                else
+                {
+                    if(!informColorMasMascotas(listaMascotas, TAM, colores, TAM_COLOR, tipos, TAM_TIPO, clientes, 5))
+                    {
+                        printf("Problema al informar color con mas mascotas\n");
+                    }
+                }
+                break;
+            case '9':
                 system("cls");
                 if(contadorTrabajos==0)
                 {

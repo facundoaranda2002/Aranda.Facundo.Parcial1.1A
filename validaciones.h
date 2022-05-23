@@ -54,17 +54,6 @@ int utn_getCadenaChar(char pResultado[], char* mensaje, char* mensajeError, int 
  */
  //int utn_getSexo(char* pResultado, char* mensaje, char* mensajeError);
 
-/** \brief permite al usuario ingresar una fecha y la valida
- *
- * \param pResultado float* es donde se guarda la fecha ingresada
- * \param mensaje char* es el mensaje que pide el ingreso del dato
- * \param mensajeError char* es el mensaje que indica al usuario que hubo un error al ingresar el dato
- * \param anioMinimo int es el valor minimo del anio que se le deja ingresar al usuario
- * \param anioMaximo int es el valor maximo del anio que se le deja ingresar al usuario
- * \return int devuelve 1 si no hubo problemas con los punteros y 0 si si los hubo
- *
- */
-int utn_getFecha(eFecha* pResultado, char* mensaje, char* mensajeError, int anioMinimo, int anioMaximo);
 
 /** \brief permite al usuario ingresar una respuesta de si(s) o no(n) y la valida
  *

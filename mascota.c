@@ -22,7 +22,13 @@ char menu()
     printf("I- Listar Trabajos\n");
     printf("J- Hardcodear mascotas\n");
     printf("K- Hardcodear trabajos\n");
-    printf("L- Informar Servicio\n");
+    printf("1- Informar Mascotas por color\n");
+    printf("2- Informar Promedio Mascotas vacunadas\n");
+    printf("3- Informar Mascotas menor edad\n");
+    printf("4- Informar Mascotas por tipo\n");
+    printf("5- Informar Cantidad de Mascotas de color y tipo a seleccionar\n");
+    printf("6- Informar Colores mas predominantes\n");
+    printf("9- Informar Servicio\n");
     printf("Z- Salir\n");
     printf("Ingrese opcion: ");
     fflush(stdin);
@@ -94,6 +100,8 @@ int altaMascota(eMascota vec[], int tam, int* pId, eColor colores[], int tamColo
                 printf("\n\n");
                 utn_getColores(colores, tamColores, &nuevaMascota.idColor);
 
+                utn_getNumeroInt(&nuevaMascota.idCliente, "Ingrese id cliente: ", "Error. ", 1, 5);
+
                 nuevaMascota.isEmpty=0;
                 nuevaMascota.id=*pId;
                 *pId=*pId+1;
@@ -141,7 +149,7 @@ int menuModificarMascota()
     return opcion;
 }
 
-int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos)
+int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOk = 0;
     int indice;
@@ -149,9 +157,9 @@ int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, 
     eMascota auxMascota;
     char salir='n';
 
-    if(vec!=NULL && tam > 0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0)
+    if(vec!=NULL && tam > 0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
     {
-        listarMascotas(vec, tam, colores, tamColores, tipos, tamTipos);
+        listarMascotas(vec, tam, colores, tamColores, tipos, tamTipos, clientes, tamClientes);
         printf("Ingrese id: ");
         scanf("%d", &id);
         if(buscarMascota(vec, tam, id, &indice))
@@ -163,9 +171,9 @@ int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, 
             else
             {
                 system("cls");
-                printf("      Id       Nombre       Tipo         Color     Edad Vacunado\n");
-                printf("-----------------------------------------------------------------------\n");
-                mostrarMascota(vec[indice], colores, tamColores, tipos, tamTipos);
+                printf("      Id       Nombre       Tipo         Color     Edad Vacunado   Cliente\n");
+                printf("-------------------------------------------------------------------------------\n");
+                mostrarMascota(vec[indice], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
 
                 do
                 {
@@ -199,40 +207,42 @@ int modificarMascota(eMascota vec[], int tam, eColor colores[], int tamColores, 
     return todoOk;
 }
 
-int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], int tamTipos)
+int mostrarMascota(eMascota m, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOk=0;
     char descColor[20];
     char descTipo[20];
+    char descCliente[20];
 
-    if(colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0)
+    if(colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
     {
         cargarDescripcionColor(colores, tamColores, m.idColor, descColor);
         cargarDescripcionTipo(tipos, tamTipos, m.idTipo, descTipo);
+        cargarDescripcionCliente(clientes, tamClientes, m.idCliente, descCliente);
 
-        printf("  %5d   %10s   %10s   %10s   %5d   %2c\n", m.id, m.nombre, descTipo, descColor, m.edad, m.vacunado);
+        printf("  %5d   %10s   %10s   %10s   %5d   %2c  %10s\n", m.id, m.nombre, descTipo, descColor, m.edad, m.vacunado, descCliente);
         todoOk=1;
     }
 
     return todoOk;
 }
 
-int listarMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos)
+int listarMascotas(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOK=0;
     int flag=0;
-    if(vec!=NULL && tam>0)
+    if(vec!=NULL && tam>0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
     {
         ordenarMascotasPorTipoYNombre(vec, tam);
         //system("cls");
         printf("       *** Listado de mascotas ***\n\n");
-        printf("      Id       Nombre       Tipo         Color     Edad Vacunado\n");
-        printf("-----------------------------------------------------------------------\n");
+        printf("      Id       Nombre       Tipo         Color     Edad Vacunado   Cliente\n");
+        printf("------------------------------------------------------------------------------\n");
         for(int i=0; i<tam; i++)
         {
             if(!vec[i].isEmpty)
             {
-                mostrarMascota(vec[i], colores, tamColores, tipos, tamTipos);
+                mostrarMascota(vec[i], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
                 flag++;
             }
         }
@@ -273,15 +283,15 @@ int ordenarMascotasPorTipoYNombre(eMascota vec[], int tam)
 }
 
 
-int bajaMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos)
+int bajaMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOk =0;
     int indice;
     int id;
     char confirma;
-    if(vec!=NULL && tam > 0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0)
+    if(vec!=NULL && tam > 0 && colores!=NULL && tamColores>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
     {
-        listarMascotas(vec, tam, colores, tamColores, tipos, tamTipos);
+        listarMascotas(vec, tam, colores, tamColores, tipos, tamTipos, clientes, tamClientes);
         printf("\n\n");
         printf("Ingrese id: ");
         scanf("%d", &id);
@@ -294,9 +304,9 @@ int bajaMascota(eMascota vec[], int tam, eColor colores[], int tamColores, eTipo
             else
             {
                 printf("\n\n");
-                printf("      Id       Nombre       Tipo         Color     Edad Vacunado\n");
-                printf("-----------------------------------------------------------------------\n");
-                mostrarMascota(vec[indice], colores, tamColores, tipos, tamTipos);
+                printf("      Id       Nombre       Tipo         Color     Edad Vacunado  Cliente\n");
+                printf("-----------------------------------------------------------------------------\n");
+                mostrarMascota(vec[indice], colores, tamColores, tipos, tamTipos, clientes, tamClientes);
                 printf("\n\n");
                 utn_getRespuesta(&confirma, "Confirma baja?(s/n): ", "Error. ");
                 if(confirma=='n')
@@ -359,13 +369,13 @@ int validarMascotas(eMascota mascotas[], int tam, int id)
     return todoOk;
 }
 
-int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], int tamCol, eTipo tipos[], int tamTipos)
+int utn_getMascotas(eMascota mascotas[], int tam, int* pId, eColor colores[], int tamCol, eTipo tipos[], int tamTipos, eCliente clientes[], int tamClientes)
 {
     int todoOk=0;
     int x;
-    if(mascotas!=NULL && tam>0 && pId!=NULL && colores!=NULL && tamCol>0 && tipos!=NULL && tamTipos>0)
+    if(mascotas!=NULL && tam>0 && pId!=NULL && colores!=NULL && tamCol>0 && tipos!=NULL && tamTipos>0 && clientes!=NULL && tamClientes>0)
     {
-        listarMascotas(mascotas, tam, colores, tamCol, tipos, tamTipos);
+        listarMascotas(mascotas, tam, colores, tamCol, tipos, tamTipos, clientes, tamClientes);
         printf("Ingrese el id de la mascota: ");
         fflush(stdin);
         while(scanf("%d", &x)==0 || !validarMascotas(mascotas, tam, x))
@@ -385,11 +395,11 @@ int hardcodearMascotas(eMascota vec[], int tam, int cant, int* pId)
     int todoOk = 0;
     eMascota impostores[] =
     {
-        {0, "Juan", 1000, 5000, 2, 's',0},
-        {0, "Daniela", 1001, 5001, 3, 'n', 0},
-        {0, "Lucia", 1000, 5002, 10, 's', 0},
-        {0, "Mauro", 1002, 5000, 11, 'n', 0},
-        {0, "Diego", 1003, 5000, 3, 'n', 0},
+        {0, "Juan", 1000, 5000, 2, 's', 1, 0},
+        {0, "Daniela", 1001, 5001, 3, 'n', 2, 0},
+        {0, "Lucia", 1000, 5002, 10, 's', 3, 0},
+        {0, "Mauro", 1002, 5000, 11, 'n', 4, 0},
+        {0, "Diego", 1003, 5000, 3, 'n', 5, 0},
     };
 
     if(vec != NULL && tam > 0 && pId != NULL && cant > 0 && cant <= tam)
